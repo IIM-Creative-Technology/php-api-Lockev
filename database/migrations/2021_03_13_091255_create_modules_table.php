@@ -19,8 +19,8 @@ class CreateModulesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
 
-            $table->unsignedBigInteger('speaker_id');
-            $table->foreign('speaker_id')->references('id')->on('speakers');
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
 
             $table->unsignedBigInteger('class_id');
             $table->foreign('class_id')->references('id')->on('student_classes');

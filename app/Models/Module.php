@@ -14,5 +14,5 @@ class Module extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'start_date', 'end_date', 'speaker_id', 'class_id'];
+    protected $fillable = ['name', 'start_date', 'end_date', 'teacher_id', 'class_id'];
 }

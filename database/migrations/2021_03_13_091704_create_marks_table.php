@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAcademicTranscriptTable extends Migration
+class CreateMarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAcademicTranscriptTable extends Migration
      */
     public function up()
     {
-        Schema::create('academic_transcripts', function (Blueprint $table) {
+        Schema::create('marks', function (Blueprint $table) {
             $table->id();
             $table->integer('value');
 
@@ -34,6 +34,6 @@ class CreateAcademicTranscriptTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academic_transcripts');
+        Schema::dropIfExists('marks');
     }
 }
