@@ -15,7 +15,7 @@ class CreateAcademicTranscriptTable extends Migration
     {
         Schema::create('academic_transcripts', function (Blueprint $table) {
             $table->id();
-            $table->integer('note');
+            $table->integer('value');
 
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');

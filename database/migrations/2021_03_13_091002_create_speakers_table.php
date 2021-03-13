@@ -17,7 +17,7 @@ class CreateSpeakersTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->year('entry_year');
+            $table->year('arrival_year');
             $table->timestamps();
         });
     }
