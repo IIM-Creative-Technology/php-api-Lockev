@@ -24,14 +24,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('api')->prefix('auth')->group(function () {
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth',
+], function () {
     Route::post('login', [AuthController::class, 'login']);
 });
 
-// Route::midddleware('jwt.auth')->group(function () {
-Route::resource('students', StudentController::class);
-Route::resource('student-classes', StudentClassController::class);
-Route::resource('teachers', TeacherController::class);
-Route::resource('modules', ModuleController::class);
-Route::resource('marks', MarkController::class);
-// });
+Route::middleware('jwt.auth')->group(function () {
+    Route::resource('students', StudentController::class);
+    Route::resource('student-classes', StudentClassController::class);
+    Route::resource('teachers', TeacherController::class);
+    Route::resource('modules', ModuleController::class);
+    Route::resource('marks', MarkController::class);
+});

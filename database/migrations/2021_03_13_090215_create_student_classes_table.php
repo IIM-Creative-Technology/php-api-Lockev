@@ -16,7 +16,7 @@ class CreateStudentClassesTable extends Migration
         Schema::create('student_classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->year('graduation_year');
+            $table->year('graduation_year')->unique();
         });
     }
 
