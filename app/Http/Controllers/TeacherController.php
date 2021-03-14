@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -13,7 +15,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Teacher::all());
     }
 
     /**
@@ -34,7 +36,17 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'arrival_year' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        } else {
+            return response()->json(Teacher::create($request->all()));
+        }
     }
 
     /**
@@ -45,7 +57,13 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        //
+        $teacher = Teacher::where('id', $id);
+
+        if (!$teacher) {
+            return response()->json('There is no teacher with the id ' . $id, 404);
+        } else {
+            return response()->json($teacher->with('modules')->get());
+        }
     }
 
     /**
@@ -68,7 +86,25 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+
+        if (!$teacher) {
+            return response()->json('There is no teacher with the id ' . $id, 404);
+        } else {
+
+            $validator = Validator::make($request->all(), [
+                'firstname' => 'string',
+                'lastname' => 'string',
+                'arrival_year' => 'integer',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 400);
+            }
+
+            $teacher->update($request->all());
+            return response()->json($teacher);
+        }
     }
 
     /**

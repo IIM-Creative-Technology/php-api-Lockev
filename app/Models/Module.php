@@ -14,5 +14,15 @@ class Module extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'start_date', 'end_date', 'teacher_id', 'class_id'];
+    protected $fillable = ['name', 'start_date', 'end_date', 'teacher_id', 'student_class_id'];
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function studentClass()
+    {
+        return $this->belongsTo(StudentClass::class);
+    }
 }

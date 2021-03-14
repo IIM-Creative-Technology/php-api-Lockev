@@ -15,4 +15,9 @@ class Teacher extends Model
      * @var array
      */
     protected $fillable = ['firstname', 'lastname', 'arrival_year'];
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

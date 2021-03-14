@@ -22,8 +22,8 @@ class CreateModulesTable extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
 
-            $table->unsignedBigInteger('class_id');
-            $table->foreign('class_id')->references('id')->on('student_classes');
+            $table->unsignedBigInteger('student_class_id');
+            $table->foreign('student_class_id')->references('id')->on('student_classes');
 
             $table->timestamps();
         });

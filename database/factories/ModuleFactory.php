@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Student;
+use App\Models\Module;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class StudentFactory extends Factory
+class ModuleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Student::class;
+    protected $model = Module::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +22,10 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            'firstname' => $this->faker->firstName,
-            'lastname' => $this->faker->lastName,
-            'age' => $this->faker->numberBetween(18, 30),
-            'entry_year' => $this->faker->numberBetween(2018, 2021),
+            'name' => $this->faker->word,
+            'start_date' => $this->faker->dateTimeBetween('now'),
+            'end_date' => $this->faker->dateTimeBetween('now', '+5 days'),
+            'teacher_id' => $this->faker->numberBetween(1, 3),
             'student_class_id' => $this->faker->numberBetween(1, 3)
         ];
     }

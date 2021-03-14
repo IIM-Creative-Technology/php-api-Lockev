@@ -48,7 +48,7 @@ class StudentClassController extends Controller
         $studentClass = StudentClass::firstWhere(['name' => $request->name], ['graduation_year' => $request->graduation_year]);
 
         if ($studentClass) {
-            return response()->json('This class already exists', 409);
+            return response()->json('This class already exists', 400);
         } else {
             return response()->json(StudentClass::create($request->all()));
         }
@@ -62,7 +62,7 @@ class StudentClassController extends Controller
      */
     public function show($id)
     {
-        $studentClass = StudentClass::find($id);
+        $studentClass = StudentClass::where('id', $id);
 
         if (!$studentClass) {
             return response()->json('There is no class with the id ' . $id, 404);
