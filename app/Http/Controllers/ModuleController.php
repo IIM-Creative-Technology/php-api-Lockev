@@ -155,6 +155,13 @@ class ModuleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $module = Module::find($id);
+
+        if (!$module) {
+            return response()->json('There is no module with the id ' . $id, 404);
+        } else {
+            $module->delete();
+            return response()->json('Removed module with id ' . $id . ' from database.');
+        }
     }
 }

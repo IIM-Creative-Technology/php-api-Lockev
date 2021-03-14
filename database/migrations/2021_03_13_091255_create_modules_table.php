@@ -20,10 +20,10 @@ class CreateModulesTable extends Migration
             $table->date('end_date');
 
             $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
 
             $table->unsignedBigInteger('student_class_id');
-            $table->foreign('student_class_id')->references('id')->on('student_classes');
+            $table->foreign('student_class_id')->references('id')->on('student_classes')->onDelete('cascade');
 
             $table->timestamps();
         });

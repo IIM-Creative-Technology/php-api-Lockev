@@ -18,10 +18,10 @@ class CreateMarksTable extends Migration
             $table->integer('value');
 
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->unsignedBigInteger('module_id');
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
 
             $table->timestamps();
         });

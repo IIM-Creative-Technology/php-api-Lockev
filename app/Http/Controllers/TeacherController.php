@@ -115,6 +115,13 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+
+        if (!$teacher) {
+            return response()->json('There is no teacher with the id ' . $id, 404);
+        } else {
+            $teacher->delete();
+            return response()->json('Removed teacher with id ' . $id . ' from database.');
+        }
     }
 }

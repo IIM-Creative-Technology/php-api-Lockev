@@ -142,6 +142,12 @@ class MarkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mark = Mark::find($id);
+        if (!$mark) {
+            return response()->json('There is no mark with the id ' . $id, 404);
+        } else {
+            $mark->delete();
+            return response()->json('Removed mark with id ' . $id . ' from database.');
+        }
     }
 }

@@ -21,7 +21,7 @@ class CreateStudentsTable extends Migration
             $table->year('entry_year');
 
             $table->unsignedBigInteger('student_class_id');
-            $table->foreign('student_class_id')->references('id')->on('student_classes');
+            $table->foreign('student_class_id')->references('id')->on('student_classes')->onDelete('cascade');
 
             $table->timestamps();
         });
