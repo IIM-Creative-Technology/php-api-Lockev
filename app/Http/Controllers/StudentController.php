@@ -66,7 +66,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::where('id', $id)->with('studentClass')->first();
+        $student = Student::where('id', $id)->with(['studentClass', 'marks'])->first();
 
         if (!$student) {
             return response()->json('There is no student with the id ' . $id, 404);

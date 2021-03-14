@@ -20,4 +20,9 @@ class Student extends Model
     {
         return $this->belongsTo(StudentClass::class);
     }
+
+    public function marks()
+    {
+        return $this->hasMany(Mark::class);
+    }
 }

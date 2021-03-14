@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mark;
 use App\Models\Module;
 use App\Models\Student;
 use App\Models\StudentClass;
@@ -24,13 +25,14 @@ class DatabaseSeeder extends Seeder
         DB::table('students')->truncate();
         DB::table('teachers')->truncate();
         DB::table('modules')->truncate();
+        DB::table('marks')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
+        // Dont forget to edit factories if you edit these values
         StudentClass::factory(3)->create();
-        // Dont forget to edit StudentFactory & ModuleFactory if you add some classe
         Student::factory(8)->create();
         Teacher::factory(3)->create();
-        // Dont forget to edit ModuleFactory if you add some classe
         Module::factory(8)->create();
+        Mark::factory(30)->create();
     }
 }
