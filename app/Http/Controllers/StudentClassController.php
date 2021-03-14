@@ -106,6 +106,7 @@ class StudentClassController extends Controller
             }
 
             $studentClass->update($request->all());
+            $studentClass->refresh();
             return response()->json($studentClass);
         }
     }
